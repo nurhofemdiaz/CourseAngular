@@ -1,3 +1,35 @@
 <p>
   newcourse works!
 </p>
+<h3>Añadir Curso</h3>
+<div>
+  <form>
+    <div class="fila">
+      <span class="etiqueta"><label for="enable">Activo</label></span>
+      <span class="form-el"><input type="checkbox" id="enable" name="enable"></span>
+    </div>
+    <div class="fila">
+        <span class="etiqueta"><label for="teacher">Profesor</label></span>
+        <span class="form-el"><select id="teacher" name="teacher">
+          <option *ngFor="let teacher of teachers" value="{{teacher.id}}">{{teacher.name}} {{teacher.surname}}</option>
+        </select></span>
+    </div>
+    <div class="fila">
+        <span class="etiqueta"><label for="title">Título</label></span>
+        <span class="form-el"><input type="text" id="title" name="title" placeholder="Introduce el título.."></span>
+    </div>
+    <div class="fila">
+        <span class="etiqueta"><label for="level">Nivel</label></span>
+        <span class="form-el"><select id="level" name="level">
+          <option *ngFor="let level of levels" value="{{$index}}">{{ level }}</option>
+        </select></span>
+    </div>
+    <div class="fila">
+        <span class="etiqueta"><label for="hours">Horas</label></span>
+        <span class="form-el"><input type="number" id="hours" name="hours"></span>
+    </div>
+    <div class="fila">
+        <a href="#" class="form-button"><span>Añadir</span></a>
+    </div>
+  </form>
+</div>

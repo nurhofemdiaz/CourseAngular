@@ -1,4 +1,4 @@
-<div class="defaultHeader">
+<div class="title">
   <h2>Catálogo de cursos</h2>
 </div>
 <div class="datagrid">
@@ -13,24 +13,30 @@
     </thead>
     <tbody *ngFor="let course of courses">
       <tr>
-        <td>{{course.title}}</td>
-        <td>{{course.teacher.name}} {{course.teacher.surname}}</td>
-        <td>{{course.level}}</td>
-        <td>{{course.hours}}</td>
+        <td>{{ course.title }}</td>
+        <td>{{ course.teacher.name }} {{ course.teacher.surname }}</td>
+        <td>{{ course.level }}</td>
+        <td>{{ course.hours }}</td>
       </tr>
     </tbody>
     <tfoot>
       <tr>
         <td colspan="4">
-          <div id="paging">
+          <div>
             <ul>
-               <li *ngIf="page.pageNumber > 0"><a href="#"><span>Previous</span></a></li>
-               <li><a href="#" class="active"><span>1</span></a></li>
-               <li><a href="#"><span>2</span></a></li>
-               <li><a href="#"><span>3</span></a></li>
-               <li *ngIf="page.maxNumberPages > page.pageNumber"><a href="#"><span>Next</span></a></li>
+                <td>
+                   <li *ngIf="page.pageNumber > 0"><a href="#"><span>Anterior</span></a></li>
+                   <li><a href="#" class="active"><span>{{ (page.pageNumber > 1) ? page.pageNumber : 1 }}</span></a></li>
+                   <li><a href="#"><span>{{ (page.pageNumber >= 1) ? page.pageNumber + 1 : 2 }}</span></a></li>
+                   <li><a href="#"><span>{{ (page.pageNumber > 1) ? page.pageNumber + 2 : 3 }}</span></a></li>
+                   <li *ngIf="page.maxNumberPages > page.pageNumber"><a href="#"><span>Siguiente</span></a></li>
+                </td>
+                <td>
+                  <li><a href="#" class="actions"><span>Nuevo curso</span></a></li>
+                </td>
             </ul>
          </div>
+       </td>
        </tr>
     </tfoot>
   </table>

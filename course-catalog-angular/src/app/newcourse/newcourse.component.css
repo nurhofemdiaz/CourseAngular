@@ -1,0 +1,68 @@
+* {
+  box-sizing: border-box;
+}
+
+form {
+  padding: 1em;
+  background: #f9f9f9;
+  border: 1px solid #c1c1c1;
+  margin-top: 2rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1em;
+}
+
+input[type=text] {
+    border: 1px solid #c3c3c3;
+    width: 100%;
+}
+
+input[type=number]{
+    border: 1px solid #c3c3c3;
+    width: 40px;
+
+}
+
+select{
+    border: 1px solid #c3c3c3;
+    width: 100%;
+}
+
+
+.fila {
+    clear: both;
+    width: auto;
+    height: 25px;
+}
+
+.fila span.etiqueta {
+    float: left;
+    width: 50%;
+    margin-right: 15px;
+    margin-top: 2px;
+    text-align: right;
+}
+
+.fila span.form-el {
+    float: left;
+    width: 40%;
+    text-align: left;
+    margin-bottom: 5px;
+}
+.fila a.form-button {
+
+    text-decoration: none;
+    display: inline-block;
+    padding: 2px 8px;
+    margin: 1px;
+    color: #FFFFFF;
+    border: 1px solid #006699;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #006699), color-stop(1, #00557F));
+    background: -moz-linear-gradient( center top, #006699 5%, #00557F 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#006699', endColorstr='#00557F');
+    background-color: #006699;
+}

@@ -61,7 +61,8 @@
 
 .datagrid table tfoot td {
 	padding: 0;
-	font-size: 12px
+	font-size: 12px;
+	colspan:4;
 }
 
 .datagrid table tfoot td div {
@@ -72,7 +73,12 @@
 	margin: 0;
 	padding: 0;
 	list-style: none;
-	text-align: left;
+}
+
+.datagrid table tfoot td ul td{
+	margin: 0;
+	padding: 0;
+	list-style: none;
 }
 
 .datagrid table tfoot li {
@@ -93,6 +99,10 @@
 	background: -moz-linear-gradient( center top, #006699 5%, #00557F 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#006699', endColorstr='#00557F');
 	background-color: #006699;
+}
+
+.datagrid table tfoot li a.actions {
+	background-color: #6495ED;
 }
 
 .datagrid table tfoot ul.active,
