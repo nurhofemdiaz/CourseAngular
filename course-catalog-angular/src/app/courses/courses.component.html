@@ -1,0 +1,37 @@
+<div class="defaultHeader">
+  <h2>Catálogo de cursos</h2>
+</div>
+<div class="datagrid">
+  <table>
+    <thead>
+      <tr>
+        <th>Título</th>
+        <th>Profesor</th>
+        <th>Nivel</th>
+        <th>Horas</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let course of courses">
+      <tr>
+        <td>{{course.title}}</td>
+        <td>{{course.teacher.name}} {{course.teacher.surname}}</td>
+        <td>{{course.level}}</td>
+        <td>{{course.hours}}</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="4">
+          <div id="paging">
+            <ul>
+               <li *ngIf="page.pageNumber > 0"><a href="#"><span>Previous</span></a></li>
+               <li><a href="#" class="active"><span>1</span></a></li>
+               <li><a href="#"><span>2</span></a></li>
+               <li><a href="#"><span>3</span></a></li>
+               <li *ngIf="page.maxNumberPages > page.pageNumber"><a href="#"><span>Next</span></a></li>
+            </ul>
+         </div>
+       </tr>
+    </tfoot>
+  </table>
+</div>
