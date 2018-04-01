@@ -13,9 +13,14 @@ import { Teacher } from '../model/teacher';
 
 @Injectable()
 export class CourseBusinessService {
+  private currentPage: number;
+  private isAscendingOrder: boolean;
 
   constructor (private http: Http, private configService: ConfigService) {}
 
+  /**
+  * This method get all teachers of backend
+  */
   public getTeachers () {
     return this.getConfig().mergeMap((result) => {
                               return this.http
@@ -24,10 +29,58 @@ export class CourseBusinessService {
                           });
   }
 
+  /**
+  * This method get levels of backend
+  */
+  public getLevels () {
+    return this.getConfig().mergeMap((result) => {
+                              return this.http
+                                      .get( result.courseBusinessService.url
+                                              + result.courseBusinessService.method.getLevels )
+                                      .pipe( catchError( this.handleError ));
+                          });
+  }
+
+  /**
+  * This method get page number of backend
+  */
+  public getPages() {
+    return this.getConfig().mergeMap((result) => {
+                              return this.http
+                                      .get( result.courseBusinessService.url
+                                              + result.courseBusinessService.method.getMaxPages
+                                              + result.globalProperties.numberRows )
+                                      .pipe( catchError( this.handleError ));
+                          });
+  }
+
+  /**
+  * This method get courses of backend
+  */
+  public getCourses (current: number, isAsc: boolean) {
+    this.currentPage = current;
+    this.isAscendingOrder = isAsc;
+    return this.getConfig().mergeMap((result) => {
+                              let constURL = result.courseBusinessService.method.getCurrentPage;
+                              constURL = constURL.replace('_numberOfPage_', this.currentPage)
+                                                  .replace('_courseSizeList_', result.globalProperties.numberRows)
+                                                  + this.isAscendingOrder;
+                              return this.http
+                                      .get( result.courseBusinessService.url + constURL )
+                                      .pipe( catchError( this.handleError ));
+                          });
+  }
+
+  /**
+  * This method get configuraton of configuration service
+  */
   private getConfig() {
       return this.configService.getConfigJson();
   }
 
+  /**
+  * This method manage errors on request http
+  */
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.

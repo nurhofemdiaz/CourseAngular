@@ -10,12 +10,15 @@ import { Teacher } from '../model/teacher';
 })
 export class NewcourseComponent implements OnInit {
   private teachers : Teacher[];
-  private levels = LEVELS;
+  private levels;
   constructor(private courseBusinessService: CourseBusinessService) { }
 
   ngOnInit() {
       this.courseBusinessService.getTeachers().subscribe(res =>{
           this.teachers = res.json();
+      });
+      this.courseBusinessService.getLevels().subscribe(res =>{
+          this.levels = res.json();
       });
   }
 }

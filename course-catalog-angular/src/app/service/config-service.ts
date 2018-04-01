@@ -9,6 +9,7 @@ export class ConfigService {
   constructor (private http: Http) {}
 
   getConfigJson () {
+    // Return configuration of config file
     return this.http.get('assets/config.json').map((res: Response) => res.json());
   }
 }
