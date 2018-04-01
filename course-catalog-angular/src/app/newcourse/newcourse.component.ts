@@ -14,11 +14,8 @@ export class NewcourseComponent implements OnInit {
   constructor(private courseBusinessService: CourseBusinessService) { }
 
   ngOnInit() {
-      // console.log(this.courseBusinessService.getTeachers());
-      // this.courseBusinessService.getTeachers().subscribe(  data => {
-      //    console.log(data);
-      //     this.teachers = data as Teacher[];
-      //    }
-      //  );
+      this.courseBusinessService.getTeachers().subscribe(res =>{
+          this.teachers = res.json();
+      });
   }
 }

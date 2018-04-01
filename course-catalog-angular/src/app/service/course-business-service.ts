@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { catchError, retry } from 'rxjs/operators';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/mergeMap';
 
 import { ConfigService } from './config-service';
 import { Teacher } from '../model/teacher';
@@ -15,26 +16,17 @@ export class CourseBusinessService {
 
   constructor (private http: Http, private configService: ConfigService) {}
 
-  // public getTeachers (): Teacher[] {
-  //   return this.getConfig()
-  //                    .subscribe(result =>{
-  //                         console.log('Primer subscribe');
-  //                         console.log(result);
-  //                         return this.http
-  //                                     .get<Teacher[]>( result.courseBusinessService.url + result.courseBusinessService.method.getTeachers )
-  //                                     .pipe( catchError( this.handleError ));
-  //                         });
-  // }
-  //
-  // private getConfig(): Observable<any> {
-  //     return this.configService.getConfigJson();
-      // .subscribe(
-                  // data => {
-                      // return data.json().courseBusinessService;
-                      // return data;
-                    // }
-                // );
-  // }
+  public getTeachers () {
+    return this.getConfig().mergeMap((result) => {
+                              return this.http
+                                      .get( result.courseBusinessService.url + result.courseBusinessService.method.getTeachers )
+                                      .pipe( catchError( this.handleError ));
+                          });
+  }
+
+  private getConfig() {
+      return this.configService.getConfigJson();
+  }
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
