@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { TEACHERS } from '../mocks/mock-teachers';
 import { LEVELS } from '../mocks/mock-levels';
+import { CourseBusinessService } from '../service/course-business-service';
+import { Teacher } from '../model/teacher';
 
 @Component({
   selector: 'app-newcourse',
@@ -8,11 +9,16 @@ import { LEVELS } from '../mocks/mock-levels';
   styleUrls: ['./newcourse.component.css']
 })
 export class NewcourseComponent implements OnInit {
-  teachers = TEACHERS;
-  levels = LEVELS;
-  constructor() { }
+  private teachers : Teacher[];
+  private levels = LEVELS;
+  constructor(private courseBusinessService: CourseBusinessService) { }
 
   ngOnInit() {
+      // console.log(this.courseBusinessService.getTeachers());
+      // this.courseBusinessService.getTeachers().subscribe(  data => {
+      //    console.log(data);
+      //     this.teachers = data as Teacher[];
+      //    }
+      //  );
   }
-
 }

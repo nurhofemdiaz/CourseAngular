@@ -1,4 +1,4 @@
-export const LEVELS: Level[] = [
+export const LEVELS: string[] = [
     "BASIC",
     "INTERMEDIATE",
     "ADVANCED"

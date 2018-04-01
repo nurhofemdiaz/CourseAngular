@@ -1,0 +1,15 @@
+{
+  "courseBusinessService": {
+      "url": "http://localhost:8080/CourseCatalog/course",
+      "method": {
+          "getTeachers":"/teachers",
+          "getLevels": "/levels",
+          "getMaxPages": "/page/size/",
+          "getCurrentPage": "/page/_numberOfPage_/size/_courseSizeList_/order/",
+          "addCourse": "/course/add"
+      }
+  },
+  "globalProperties": {
+      "numberRows": 6
+  }
+}
