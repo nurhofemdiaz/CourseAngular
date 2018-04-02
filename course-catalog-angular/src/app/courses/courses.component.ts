@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { COURSES } from '../mocks/mock-courses';
 import { PAGE } from '../mocks/mock-pages';
 
@@ -13,8 +13,12 @@ import { Course } from '../model/course';
 export class CoursesComponent implements OnInit {
   courses: Course[];
   page = PAGE;
+  @Input()
+  showList: boolean;
+  @Output()
+  getShow: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  constructor(private courseBusinessService: CourseBusinessService) { }
+  constructor ( private courseBusinessService: CourseBusinessService) { }
 
   ngOnInit() {
     // Set initial values
@@ -75,5 +79,9 @@ export class CoursesComponent implements OnInit {
         this.page.pageNumber = (this.page.pageNumber > 1) ? this.page.pageNumber + 1 : 3;
         this.reloadTable();
       }
+  }
+
+  pressButtonNew() {
+    this.getShow.emit(false);
   }
 }

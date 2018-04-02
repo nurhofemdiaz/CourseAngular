@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { LEVELS } from '../mocks/mock-levels';
 import { CourseBusinessService } from '../service/course-business-service';
 import { Teacher } from '../model/teacher';
@@ -11,6 +11,11 @@ import { Teacher } from '../model/teacher';
 export class NewcourseComponent implements OnInit {
   private teachers : Teacher[];
   private levels;
+  @Input()
+  showList: boolean;
+  @Output()
+  getShow: EventEmitter<boolean> = new EventEmitter<boolean>();
+
   constructor(private courseBusinessService: CourseBusinessService) { }
 
   ngOnInit() {

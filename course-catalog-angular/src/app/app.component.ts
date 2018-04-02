@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Course Catalog';
+  showList = true;
+
+  getShow(event: boolean){
+    this.showList = event;
+  }
 }
