@@ -26,4 +26,8 @@ export class NewcourseComponent implements OnInit {
           this.levels = res.json();
       });
   }
+
+  addCourse(){
+    
+  }
 }
