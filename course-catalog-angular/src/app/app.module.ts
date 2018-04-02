@@ -10,6 +10,8 @@ import { NewcourseComponent } from './newcourse/newcourse.component';
 import { ConfigService } from "./service/config-service"
 import { CourseBusinessService } from "./service/course-business-service"
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { CourseBusinessService } from "./service/course-business-service"
   ],
   imports: [
     BrowserModule,
-    HttpModule
+    HttpModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     ConfigService,

@@ -10,11 +10,13 @@ import 'rxjs/add/operator/mergeMap';
 
 import { ConfigService } from './config-service';
 import { Teacher } from '../model/teacher';
+import { Course } from '../model/course';
 
 @Injectable()
 export class CourseBusinessService {
   private currentPage: number;
   private isAscendingOrder: boolean;
+  private course: Course;
 
   constructor (private http: Http, private configService: ConfigService) {}
 
@@ -67,6 +69,14 @@ export class CourseBusinessService {
                                                   + this.isAscendingOrder;
                               return this.http
                                       .get( result.courseBusinessService.url + constURL )
+                                      .pipe( catchError( this.handleError ));
+                          });
+  }
+
+  public addCourse (course: Course) {
+    return this.getConfig().mergeMap((result) => {
+                              return this.http
+                                      .post( result.courseBusinessService.url + result.courseBusinessService.method.addCourse , course )
                                       .pipe( catchError( this.handleError ));
                           });
   }

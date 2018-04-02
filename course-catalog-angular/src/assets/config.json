@@ -6,7 +6,7 @@
           "getLevels": "/levels",
           "getMaxPages": "/page/size/",
           "getCurrentPage": "/page/_numberOfPage_/size/_courseSizeList_/order/",
-          "addCourse": "/course/add"
+          "addCourse": "/add"
       }
   },
   "globalProperties": {

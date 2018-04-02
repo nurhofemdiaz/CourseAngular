@@ -1,35 +1,34 @@
-<p>
-  newcourse works!
-</p>
 <h3>Añadir Curso</h3>
 <div>
-  <form>
+  <form [formGroup]="form" #formDir="ngForm" novalidate>
     <div class="fila">
       <span class="etiqueta"><label for="enable">Activo</label></span>
-      <span class="form-el"><input type="checkbox" id="enable" name="enable"></span>
+      <span class="form-el"><input type="checkbox" id="enable" formControlName="enable" [(ngModel)]="newCourse.enable"></span>
     </div>
     <div class="fila">
         <span class="etiqueta"><label for="teacher">Profesor</label></span>
-        <span class="form-el"><select id="teacher" name="teacher">
+        <span class="form-el"><select id="teacher" name="teacher" formControlName="teacher" [(ngModel)]="newCourse.teacher.id" required>
           <option *ngFor="let teacher of teachers" value="{{teacher.id}}">{{teacher.name}} {{teacher.surname}}</option>
         </select></span>
     </div>
     <div class="fila">
         <span class="etiqueta"><label for="title">Título</label></span>
-        <span class="form-el"><input type="text" id="title" name="title" placeholder="Introduce el título.."></span>
+        <span class="form-el">
+          <input type="text" id="title" formControlName="title" placeholder="Introduce el título.." minlength="1" maxlength="99" [(ngModel)]="newCourse.title" required >
+        </span>
     </div>
     <div class="fila">
         <span class="etiqueta"><label for="level">Nivel</label></span>
-        <span class="form-el"><select id="level" name="level">
-          <option *ngFor="let level of levels" value="{{$index}}">{{ level }}</option>
+        <span class="form-el"><select id="level" formControlName="level" ngModel value="0" [(ngModel)]="newCourse.level">
+          <option *ngFor="let level of levels; let i = index" value="{{i}}">{{ level }}</option>
         </select></span>
     </div>
     <div class="fila">
         <span class="etiqueta"><label for="hours">Horas</label></span>
-        <span class="form-el"><input type="number" id="hours" name="hours"></span>
+        <span class="form-el"><input type="number" id="hours" formControlName="hours" min="1" max="99" [(ngModel)]="newCourse.hours" required ></span>
     </div>
     <div class="fila">
-        <a href="#" class="form-button"><span>Añadir</span></a>
+        <a href="#" class="form-button" (click)="addCourse()"><span>Añadir</span></a>
     </div>
   </form>
 </div>
