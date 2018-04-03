@@ -4,11 +4,11 @@
 <div class="datagrid">
   <table>
     <thead>
-      <tr><th>Título</th><th>Profesor</th><th>Nivel</th><th>Horas</th></tr>
+      <tr><th><a href="#" (click)="pressOrder()"><span>Título</span></a></th><th>Profesor</th><th>Nivel</th><th>Horas</th></tr>
     </thead>
     <tbody *ngFor="let course of courses">
       <tr>
-        <td>{{ course.title }}</td>
+        <td >{{ course.title }}</td>
         <td>{{ course.teacher.name }} {{ course.teacher.surname }}</td>
         <td>{{ course.level }}</td>
         <td>{{ course.hours }}</td>

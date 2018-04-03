@@ -1,6 +1,6 @@
 <h3>Añadir Curso</h3>
 <div>
-  <form [formGroup]="form" #formDir="ngForm" novalidate>
+  <form [formGroup]="form" novalidate>
     <div class="fila">
       <span class="etiqueta"><label for="enable">Activo</label></span>
       <span class="form-el"><input type="checkbox" id="enable" formControlName="enable" [(ngModel)]="newCourse.enable"></span>

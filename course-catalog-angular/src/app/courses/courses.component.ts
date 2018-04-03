@@ -49,6 +49,14 @@ export class CoursesComponent implements OnInit {
     }
   }
 
+  pressOrder() {
+
+      // Load course table
+      this.page.isAscendingOrder = !this.page.isAscendingOrder;
+      this.reloadTable();
+    
+  }
+
   pressButtonNext() {
       if(this.page.pageNumber < this.page.maxNumberPages){
         // Load course table
