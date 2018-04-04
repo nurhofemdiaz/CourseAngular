@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import { Http, RequestOptions } from '@angular/http';
+import { HttpResponse, HttpErrorResponse,  HttpParams } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
@@ -67,8 +67,13 @@ export class CourseBusinessService {
                               constURL = constURL.replace('_numberOfPage_', this.currentPage)
                                                   .replace('_courseSizeList_', result.globalProperties.numberRows)
                                                   + this.isAscendingOrder;
+                              let data = {numberOfPage: String(this.currentPage),
+                                courseSizeList: String(result.globalProperties.numberRows),
+                                order: String(this.isAscendingOrder)
+                              };
                               return this.http
-                                      .get( result.courseBusinessService.url + constURL )
+                                      .get( result.courseBusinessService.url
+                                        + result.courseBusinessService.method.getCurrentPage, {params: data})
                                       .pipe( catchError( this.handleError ));
                           });
   }
